@@ -1,0 +1,650 @@
+<html lang="ja"
+    ><head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>よろずや チラシ</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700&display=swap");
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Noto Sans JP", sans-serif;
+                /* background: #eef3f8;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                min-height: 100vh;
+                padding: 40px 20px; */
+            }
+
+            .flyer {
+                /* width: min(210mm, 100%); */
+                /* min-height: 297mm; */
+                background: #ffffff;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            }
+
+            /* Header */
+            .header {
+                background: #1a4f8a;
+                padding: 36px 40px 62px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .header::after {
+                content: "";
+                position: absolute;
+                bottom: -24px;
+                left: 0;
+                right: 0;
+                height: 48px;
+                background: #ffffff;
+                clip-path: ellipse(55% 100% at 50% 100%);
+            }
+
+            .header-top {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                margin-bottom: 10px;
+            }
+
+            .header__sentence {
+                text-align: center;
+            }
+
+            .logo-icon {
+                width: 48px;
+                height: 48px;
+                background: rgba(255, 255, 255, 0.18);
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 26px;
+            }
+
+            .service-name {
+                font-family: "Noto Sans JP", sans-serif;
+                font-size: 42px;
+                font-weight: 700;
+                color: #ffffff;
+                letter-spacing: 0.12em;
+                line-height: 1;
+                margin-top: 10px;
+            }
+
+            .tagline {
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.82);
+                letter-spacing: 0.15em;
+                margin-top: 6px;
+            }
+
+            /* Catch copy */
+            .catch {
+                text-align: center;
+                padding: 48px 40px 32px;
+            }
+
+            .catch h2 {
+                font-size: 22px;
+                font-weight: 700;
+                color: #1a2e4a;
+                line-height: 1.7;
+            }
+
+            .catch h2 span {
+                color: #1a4f8a;
+            }
+
+            .catch-sub {
+                margin-top: 10px;
+                font-size: 13px;
+                color: #666;
+                line-height: 1.8;
+            }
+
+            /* Divider */
+            .divider {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin: 0 40px 28px;
+            }
+
+            .divider-line {
+                flex: 1;
+                height: 1px;
+                background: #c8dff5;
+            }
+
+            .divider-label {
+                font-size: 12px;
+                font-weight: 700;
+                color: #1a4f8a;
+                letter-spacing: 0.2em;
+                background: #e8f1fa;
+                padding: 4px 14px;
+                border-radius: 20px;
+            }
+
+            /* Service cards — 1 column, large */
+            .services {
+                padding: 0 40px;
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+                margin-bottom: 36px;
+            }
+
+            .service-card {
+                border: 1.5px solid #c8dff5;
+                border-radius: 16px;
+                padding: 24px 24px 20px;
+                background: #fafcff;
+            }
+
+            .service-card-header {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                margin-bottom: 10px;
+            }
+
+            .service-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                background: #e8f1fa;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                flex-shrink: 0;
+            }
+
+            .service-title {
+                font-size: 17px;
+                font-weight: 700;
+                color: #1a2e4a;
+                line-height: 1.4;
+            }
+
+            .service-desc {
+                font-size: 13px;
+                color: #555;
+                line-height: 1.8;
+                padding-left: 62px;
+            }
+
+            .service-desc ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .service-desc ul li::before {
+                content: "・";
+                color: #1a4f8a;
+                font-weight: 700;
+            }
+
+            .service-desc ul li span {
+                display: inline-block;
+                margin-left: 7px;
+            }
+
+            /* Highlight box */
+            .highlight-box {
+                margin: 0 40px 36px;
+                background: #fff8e8;
+                border: 1.5px solid #f0d080;
+                border-radius: 12px;
+                padding: 18px 22px;
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            .highlight-icon {
+                font-size: 28px;
+                flex-shrink: 0;
+                margin-top: 2px;
+            }
+
+            .highlight-text h3 {
+                font-size: 14px;
+                font-weight: 700;
+                color: #7a5000;
+                margin-bottom: 5px;
+            }
+
+            .highlight-text p {
+                font-size: 12px;
+                color: #886000;
+                line-height: 1.75;
+            }
+
+            /* Price */
+            .price-section {
+                margin: 0 40px 30px;
+            }
+
+            .price-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+                margin-top: 16px;
+            }
+
+            .price-card {
+                background: #f0f6fd;
+                border: 1.5px solid #c8dff5;
+                border-radius: 12px;
+                padding: 18px 16px;
+                text-align: center;
+            }
+
+            .price-card-label {
+                font-size: 12px;
+                color: #1a4f8a;
+                font-weight: 700;
+                margin-bottom: 8px;
+                letter-spacing: 0.05em;
+            }
+
+            .price-card-market {
+                font-size: 12px;
+                color: #999;
+                text-decoration: line-through;
+                margin-bottom: 4px;
+            }
+
+            .price-card-amount {
+                font-size: 38px;
+                font-weight: 900;
+                color: #1a2e4a;
+                line-height: 1;
+            }
+
+            .price-card-amount span {
+                font-size: 15px;
+                font-weight: 500;
+                color: #555;
+            }
+
+            .price-card-note {
+                font-size: 11px;
+                color: #888;
+                margin-top: 7px;
+                line-height: 1.6;
+            }
+
+            .price-badge {
+                display: inline-block;
+                background: #e63a3a;
+                color: #fff;
+                font-size: 10px;
+                font-weight: 700;
+                padding: 2px 8px;
+                border-radius: 20px;
+                margin-bottom: 6px;
+                letter-spacing: 0.05em;
+            }
+
+            /* Visit note */
+            .visit-note {
+                margin: 0 40px 30px;
+                background: #eef3f8;
+                border-left: 4px solid #1a4f8a;
+                border-radius: 8px;
+                padding: 16px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .visit-note-row {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                font-size: 13px;
+                color: #1a2e4a;
+                line-height: 1.6;
+            }
+
+            .visit-note-icon {
+                font-size: 16px;
+                flex-shrink: 0;
+                margin-top: 1px;
+            }
+
+            .visit-note strong {
+                color: #1a4f8a;
+                font-weight: 700;
+            }
+
+            /* Footer */
+            .footer {
+                background: #1a2e4a;
+                padding: 24px 40px;
+                margin-top: auto;
+            }
+
+            .footer-contact {
+                color: #fff;
+            }
+
+            .footer-contact h3 {
+                font-size: 11px;
+                letter-spacing: 0.2em;
+                color: rgba(255, 255, 255, 0.6);
+                margin-bottom: 12px;
+            }
+
+            .contact-row {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 8px;
+            }
+
+            .contact-icon {
+                font-size: 16px;
+                width: 20px;
+                text-align: center;
+                flex-shrink: 0;
+            }
+
+            .contact-text {
+                font-size: 15px;
+                font-weight: 500;
+                color: #fff;
+            }
+
+            .contact-sub {
+                font-size: 11px;
+                color: rgba(255, 255, 255, 0.55);
+                margin-left: 30px;
+                margin-bottom: 12px;
+            }
+
+            .footer-note {
+                margin-top: 16px;
+                padding-top: 14px;
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                font-size: 10.5px;
+                color: rgba(255, 255, 255, 0.45);
+                line-height: 1.7;
+            }
+
+            /* ===== Responsive ===== */
+            @media (max-width: 680px) {
+                body {
+                    padding: 0;
+                    background: #fff;
+                }
+                .flyer {
+                    width: 100%;
+                    min-height: auto;
+                    box-shadow: none;
+                }
+                .header {
+                    padding: 28px 24px 26px;
+                }
+                .service-name {
+                    font-size: 34px;
+                }
+                .tagline {
+                    font-size: 12px;
+                }
+                .catch {
+                    padding: 40px 24px 22px;
+                }
+                .catch h2 {
+                    font-size: 19px;
+                }
+                .divider {
+                    margin: 0 24px 22px;
+                }
+                .services {
+                    padding: 0 24px;
+                    margin-bottom: 26px;
+                }
+                .visit-note {
+                    margin: 0 24px 24px;
+                }
+                .highlight-box {
+                    margin: 0 24px 26px;
+                }
+                .price-section {
+                    margin: 0 24px 26px;
+                }
+                .footer {
+                    padding: 22px 24px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .header {
+                    padding: 22px 18px 40px;
+                }
+                .logo-icon {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 22px;
+                }
+                .service-name {
+                    font-size: 28px;
+                }
+                .tagline {
+                    font-size: 11px;
+                    letter-spacing: 0.08em;
+                }
+                .catch {
+                    padding: 32px 18px 18px;
+                }
+                .catch h2 {
+                    font-size: 17px;
+                }
+                .catch-sub {
+                    font-size: 12px;
+                }
+                .divider {
+                    margin: 0 18px 18px;
+                }
+                .divider-label {
+                    font-size: 11px;
+                    padding: 4px 10px;
+                }
+                .services {
+                    padding: 0 18px;
+                    gap: 14px;
+                    margin-bottom: 20px;
+                }
+                .service-card {
+                    padding: 18px 16px 16px;
+                }
+                .service-icon {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 20px;
+                }
+                .service-title {
+                    font-size: 15px;
+                }
+                .service-desc {
+                    font-size: 12px;
+                    padding-left: 0;
+                }
+                .highlight-box {
+                    margin: 0 18px 20px;
+                    padding: 14px 16px;
+                    gap: 10px;
+                }
+                .highlight-icon {
+                    font-size: 22px;
+                }
+                .highlight-text h3 {
+                    font-size: 13px;
+                }
+                .highlight-text p {
+                    font-size: 11px;
+                }
+                .price-section {
+                    margin: 0 18px 22px;
+                }
+                .price-grid {
+                    grid-template-columns: 1fr;
+                    gap: 10px;
+                }
+                .visit-note {
+                    margin: 0 18px 22px;
+                    font-size: 12px;
+                }
+                .footer {
+                    padding: 20px 18px;
+                }
+                .contact-text {
+                    font-size: 14px;
+                }
+                .footer-note {
+                    font-size: 10px;
+                }
+            }
+
+            @media print {
+                body {
+                    background: white;
+                    padding: 0;
+                }
+                .flyer {
+                    box-shadow: none;
+                    width: 210mm;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flyer">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-top">
+                    <div class="header__sentence"> <div class="tagline">スマホ・PCサポートサービス</div><div class="service-name">よろずや</div> </div>
+                </div>
+            </div>
+
+            <!-- Catch copy -->
+            <div class="catch">
+                <h2>スマホ・パソコンのこと、<br /><span>おまかせください！</span></h2>
+                <p class="catch-sub">
+                    データ移行・操作方法のご案内など<br />
+                    初めての方も、機種変更の方も、<br />
+                    丁寧にサポートいたします！
+                </p>
+            </div>
+
+            <!-- Services -->
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-label">サービス内容</div>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <div class="service-icon">🔄</div>
+                        <div class="service-title">データ移行</div>
+                    </div>
+                    <div class="service-desc">
+                        <ul>
+                            <li>写真・動画・連絡先の移行</li>
+                            <li>LINEのトーク履歴・アカウント引き継ぎ</li>
+                            <li>各種アプリのアカウント・データ移行<span>etc...</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <div class="service-icon">📖</div>
+                        <div class="service-title">スマホ内の操作サポート</div>
+                    </div>
+                    <div class="service-desc">
+                        <ul>
+                            <li>基本操作・アプリの使い方説明</li>
+                            <li>Wi-Fi・メール・各種設定のサポート</li>
+                            <li>LINE・PayPay などアプリ初期設定<span>etc...</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price -->
+            <div class="price-section">
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-label">料金表</div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <div class="price-grid">
+                    <div class="price-card">
+                        <div class="price-card-label">🔄 データ移行</div>
+                        <div class="price-badge">相場の半額以下！</div>
+                        <div class="price-card-market">相場 3,300円〜</div>
+                        <div class="price-card-amount">1,500<span>円〜</span></div>
+                        <div class="price-card-note">税込／1件あたり</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="price-card-label">📖 操作サポート</div>
+                        <div class="price-badge">相場より大幅にお安く対応致します！</div>
+                        <div class="price-card-market">相場 3,300円〜</div>
+                        <div class="price-card-amount">500<span>円〜</span></div>
+                        <div class="price-card-note">税込／1件あたり<br />※2時間以上かかる作業は要相談</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visit note -->
+            <div class="visit-note">
+                <div class="visit-note-row">
+                    <span class="visit-note-icon">🚗</span>
+                    <span>出張サービスは承っておりません。</span>
+                </div>
+                <div class="visit-note-row">
+                    <span class="visit-note-icon">🏠</span>
+                    <span>ご利用の際は <strong>コスメティックサロン MINC'S</strong> へのご来店をお願いいたします。</span>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-contact">
+                    <h3>お問い合わせ・ご予約</h3>
+
+                    <div class="contact-row">
+                        <span class="contact-icon">📞</span>
+                        <span class="contact-text">000-0000-0000</span>
+                    </div>
+                    <div class="contact-sub">受付時間：月〜土 10:00〜18:00（日・祝休）</div>
+                </div>
+
+                <div class="footer-note">
+                    ※ 料金は作業内容により変動する場合がございます。事前にお見積りをご案内いたします。<br />
+                    ※ 対応機種：iPhone・Android（主要機種）／Windows・Mac
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
